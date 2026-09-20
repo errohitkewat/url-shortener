@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 
-connectDb()
+await connectDb()
 
 
 // prefix => http://localhost:3000/api/url
