@@ -3,7 +3,7 @@ import UrlCard from "./components/UrlCard";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../config/axiosInstance";
 import CreateShortCodeInput from "./components/CreateShortCodeInput";
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 
 
@@ -96,18 +96,18 @@ const App = () => {
                 Current shortened URL
               </p>
               <a
-                href={`http://localhost:3000/${currentUrl?.shortCode}`}
+                href={`${BACKEND_URL}/${currentUrl?.shortCode}`}
                 target="_blank"
                 className="mt-2 break-all text-lg font-semibold tracking-tight sm:text-xl">
                 { 
-                  currentUrl && `http://localhost:3000/${currentUrl.shortCode}`
+                  currentUrl && `${BACKEND_URL}/${currentUrl.shortCode}`
                 }
               </a>
             </div>
             { 
               currentUrl ? <button
                 type="button"
-                onClick={() => copyShortUrl(`http://localhost:3000/${currentUrl?.shortCode}`)}
+                onClick={() => copyShortUrl(`${BACKEND_URL}/${currentUrl?.shortCode}`)}
                 className="min-h-8 rounded-xl border border-white/15 bg-white px-5 text-sm font-semibold text-[#0f172a] transition hover:bg-[#e5efff]"
               >
                 copy
@@ -135,7 +135,7 @@ const App = () => {
 
           <div className="divide-y divide-[#edf1f7]">
             {urls.map((url) => (
-              <UrlCard copyShortUrl={ copyShortUrl } deleteUrl={ deleteUrl } key={url._id} url={url} />
+              <UrlCard BACKEND_URL={BACKEND_URL} copyShortUrl={ copyShortUrl } deleteUrl={ deleteUrl } key={url._id} url={url} />
             ))}
           </div>
         </div>

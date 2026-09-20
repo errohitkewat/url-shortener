@@ -1,6 +1,6 @@
 
 
-const UrlCard = ({ url, deleteUrl, copyShortUrl }) => {
+const UrlCard = ({ url, deleteUrl, BACKEND_URL, copyShortUrl }) => {
   return (
     <article
       key={url.id}
@@ -8,10 +8,10 @@ const UrlCard = ({ url, deleteUrl, copyShortUrl }) => {
     >
       <div className="min-w-0">
         <a
-          href={`http://localhost:3000/${url.shortCode}`}
+          href={`${BACKEND_URL}/${url.shortCode}`}
           target="_blank"
           className="break-all text-base font-semibold text-[#2563eb]">
-          {`http://localhost:3000/${url.shortCode}`}
+          {`${BACKEND_URL}/${url.shortCode}`}
         </a>
         <p className="mt-2 truncate text-sm text-[#64748b]">
           {url.originalUrl}
@@ -27,7 +27,7 @@ const UrlCard = ({ url, deleteUrl, copyShortUrl }) => {
         <button
           type="button"
           onClick={() => { 
-            copyShortUrl(`http://localhost:3000/${url.shortCode}`)
+            copyShortUrl(`${BACKEND_URL}/${url.shortCode}`)
           }}
           className=" rounded-lg py-1 border border-[#dbe3ee] px-4 text-sm font-semibold text-[#334155] transition hover:border-[#2563eb] hover:text-[#2563eb]"
         >
