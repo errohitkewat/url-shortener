@@ -2,11 +2,12 @@ import express from 'express';
 import {connectDb} from "../config/db.js";
 import urlRouter from '../routes/url.model.js';
 import { UrlModel } from '../models/url.model.js';
+import cors from "cors";
 
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 
 await connectDb()
 
