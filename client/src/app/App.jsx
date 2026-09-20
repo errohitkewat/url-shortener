@@ -62,23 +62,24 @@ const App = () => {
 
 
   return (
-    <main className="min-h-screen bg-[#f6f7fb] px-4 py-8 text-[#111827] sm:px-6 lg:px-8">
-      <section className="mx-auto flex w-full max-w-5xl flex-col gap-6">
-
-
-
-        <div className="flex flex-col gap-3">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h1 className="text-3xl font-semibold tracking-tight text-[#0f172a] sm:text-4xl">
-                Short links, cleanly managed.
-              </h1>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#64748b] sm:text-base">
-                Paste a long URL, create a compact link, and keep every shortened URL organized in one place.
-              </p>
-            </div>
+    <main className="min-h-screen bg-[#f7f1e6] px-4 py-6 text-[#231f1a] sm:px-6 lg:px-8">
+      <section className="mx-auto flex w-full max-w-4xl flex-col gap-5">
+        <header className="flex flex-col gap-4 border-b border-[#ded1bd] pb-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8c7252]">
+              Link atelier
+            </p>
+            <h1 className="mt-3 max-w-2xl text-2xl font-semibold tracking-normal text-[#211c17] sm:text-3xl">
+              Short links, quietly organized.
+            </h1>
+            <p className="mt-2 max-w-xl text-xs leading-5 text-[#776958] sm:text-sm">
+              Create compact URLs and keep every recent link in a calm, polished workspace.
+            </p>
           </div>
-        </div>
+          <div className="w-fit border border-[#ded1bd] bg-[#fffaf1] px-3 py-2 text-xs text-[#6f604f] shadow-[0_10px_30px_rgba(58,45,31,0.06)]">
+            {urls.length} { urls.length === 1 ? "link" : "links"}
+          </div>
+        </header>
 
 
 
@@ -89,18 +90,18 @@ const App = () => {
 
 
 
-        <div className="rounded-[1.5rem] border border-[#dbe3ee] bg-[#0f172a] p-5 text-white shadow-[0_20px_70px_rgba(15,23,42,0.16)] sm:p-4">
+        <div className="border border-[#d8cab5] bg-[#29241e] p-4 text-[#fff8ec] shadow-[0_18px_50px_rgba(54,43,31,0.18)] sm:p-5">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#93c5fd]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#d9c39d]">
                 Current shortened URL
               </p>
               <a
                 href={`${BACKEND_URL}/${currentUrl?.shortCode}`}
                 target="_blank"
-                className="mt-2 break-all text-lg font-semibold tracking-tight sm:text-xl">
+                className="mt-2 block break-all text-sm font-medium tracking-normal text-[#fffaf1] sm:text-base">
                 { 
-                  currentUrl && `${BACKEND_URL}/${currentUrl.shortCode}`
+                  currentUrl ? `${BACKEND_URL}/${currentUrl.shortCode}` : "No URL created yet"
                 }
               </a>
             </div>
@@ -108,9 +109,9 @@ const App = () => {
               currentUrl ? <button
                 type="button"
                 onClick={() => copyShortUrl(`${BACKEND_URL}/${currentUrl?.shortCode}`)}
-                className="min-h-8 rounded-xl border border-white/15 bg-white px-5 text-sm font-semibold text-[#0f172a] transition hover:bg-[#e5efff]"
+                className="min-h-9 border border-[#f5e5c9] bg-[#fff8ec] px-5 text-xs font-semibold uppercase tracking-[0.12em] text-[#29241e] transition hover:bg-[#efe0c3]"
               >
-                copy
+                Copy
               </button> : ""
             }
           </div>
@@ -118,22 +119,22 @@ const App = () => {
 
 
 
-        <div className="overflow-hidden rounded-[1.75rem] border border-[#e1e6ef] bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
-          <div className="flex flex-col gap-2 border-b border-[#edf1f7] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="overflow-hidden border border-[#ded1bd] bg-[#fffaf1] shadow-[0_24px_70px_rgba(58,45,31,0.08)]">
+          <div className="flex flex-col gap-2 border-b border-[#e8dcc9] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
             <div>
-              <h2 className="text-xl font-semibold tracking-tight text-[#0f172a]">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#2c261f]">
                 All shortened URLs
               </h2>
-              <p className="mt-1 text-sm text-[#64748b]">
+              <p className="mt-1 text-xs text-[#827260]">
                 Review your recent links, clicks, and quick actions.
               </p>
             </div>
-            <span className="w-fit rounded-full bg-[#eff6ff] px-3 py-1 text-sm font-medium text-[#2563eb]">
+            <span className="w-fit border border-[#ded1bd] bg-[#f7f1e6] px-3 py-1 text-[11px] font-semibold text-[#6e5536]">
               {urls.length} { urls.length === 1 ? "link" : "links"}
             </span>
           </div>
 
-          <div className="divide-y divide-[#edf1f7]">
+          <div className="divide-y divide-[#e8dcc9]">
             {urls.map((url) => (
               <UrlCard BACKEND_URL={BACKEND_URL} copyShortUrl={ copyShortUrl } deleteUrl={ deleteUrl } key={url._id} url={url} />
             ))}

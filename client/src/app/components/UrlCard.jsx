@@ -4,32 +4,32 @@ const UrlCard = ({ url, deleteUrl, BACKEND_URL, copyShortUrl }) => {
   return (
     <article
       key={url.id}
-      className="grid gap-4 px-5 py-5 transition hover:bg-[#f8fafc] sm:px-6 lg:grid-cols-[1fr_auto]"
+      className="grid gap-4 px-4 py-4 transition hover:bg-[#fbf4e8] sm:px-5 lg:grid-cols-[1fr_auto]"
     >
       <div className="min-w-0">
         <a
           href={`${BACKEND_URL}/${url.shortCode}`}
           target="_blank"
-          className="break-all text-base font-semibold text-[#2563eb]">
+          className="break-all text-sm font-semibold text-[#3d3329] transition hover:text-[#7d5d35]">
           {`${BACKEND_URL}/${url.shortCode}`}
         </a>
-        <p className="mt-2 truncate text-sm text-[#64748b]">
+        <p className="mt-2 truncate text-xs text-[#837360]">
           {url.originalUrl}
         </p>
       </div>
-      <div className="flex flex-wrap items-center gap-3">
-        <div className=" flex gap-2 ">
-          <p className="text-xs font-medium  tracking-[0.14em] text-[#94a3b8]">
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="mr-1 flex items-center gap-2 border border-[#e3d6c3] bg-[#fffcf7] px-3 py-1.5">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#988773]">
             Clicks
           </p>
-          <p className="text-xs font-semibold text-[#0f172a]">{url.clicks}</p>
+          <p className="text-xs font-semibold text-[#2b251f]">{url.clicks}</p>
         </div>
         <button
           type="button"
           onClick={() => { 
             copyShortUrl(`${BACKEND_URL}/${url.shortCode}`)
           }}
-          className=" rounded-lg py-1 border border-[#dbe3ee] px-4 text-sm font-semibold text-[#334155] transition hover:border-[#2563eb] hover:text-[#2563eb]"
+          className="min-h-8 border border-[#d6c8b4] bg-transparent px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#4c4237] transition hover:border-[#8c7252] hover:bg-[#f2e5d0]"
         >
           Copy
         </button>
@@ -38,7 +38,7 @@ const UrlCard = ({ url, deleteUrl, BACKEND_URL, copyShortUrl }) => {
           onClick={() => { 
             deleteUrl(url._id)
           }}
-          className="py-1 text-sm rounded-lg border border-[#fee2e2] bg-[#fff7f7] px-4 font-semibold text-[#dc2626] transition hover:bg-[#fee2e2]"
+          className="min-h-8 border border-[#ead1c8] bg-[#fff8f4] px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#9d3f2f] transition hover:bg-[#f5dfd7]"
         >
           Delete
         </button>

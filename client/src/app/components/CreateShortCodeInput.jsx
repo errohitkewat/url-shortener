@@ -2,21 +2,21 @@
 
 const CreateShortCodeInput = ({ inputValue, createShortUrl, setInputValue }) => {
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border border-[#e5e9f2] bg-[#f9fafc] p-3 sm:flex-row sm:items-center">
+    <div className="flex flex-col gap-3 border border-[#ded1bd] bg-[#fffaf1] p-2 shadow-[0_18px_60px_rgba(58,45,31,0.08)] sm:flex-row sm:items-center">
         <input
           type="url"
           name="url"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Paste your long URL here"
-          className="min-h-12 flex-1 rounded-xl border border-transparent bg-white px-4 text-sm text-[#0f172a] outline-none ring-1 ring-[#e5e7eb] transition placeholder:text-[#94a3b8] focus:ring-2 focus:ring-[#2563eb]"
+          className="min-h-11 flex-1 border border-[#eadfce] bg-[#fffcf7] px-3 text-xs text-[#2b251f] outline-none transition placeholder:text-[#a79a8a] focus:border-[#8c7252] focus:bg-white sm:text-sm"
         />
         <button
           type="button"
           onClick={() => { 
             createShortUrl();
           }}
-          className="min-h-12 rounded-xl bg-[#111827] px-6 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition hover:bg-[#1f2937]"
+          className="min-h-11 bg-[#2b251f] px-5 text-xs font-semibold uppercase tracking-[0.12em] text-[#fff8ec] shadow-[0_12px_28px_rgba(43,37,31,0.16)] transition hover:bg-[#4a3a2a]"
         >
           Shorten URL
         </button>
